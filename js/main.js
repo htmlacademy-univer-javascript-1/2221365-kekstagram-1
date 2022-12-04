@@ -10,3 +10,6 @@ const checkMaxLenght = (testableStr, maxLenght) => {
   }
   return testableStr.lenght <= maxLenght;
 };
+
+checkMaxLenght('pt', 4);
+getRandomNumber(1, 8);
