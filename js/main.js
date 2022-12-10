@@ -26,6 +26,8 @@ const LIKES = {
   MAX: 200
 };
 
+const MAX_PHOTO = 25;
+
 function checkStringLength (string, length) {
   return string.length <= length;
 }
@@ -44,27 +46,15 @@ const createComment = (id) => ({
   name: NAMES[getRandomPositiveInteger(0, NAMES.length - 1)]
 });
 
-const createCommentsArray = () => {
-  const comments = Array.from({
-    length: 4
-  });
-  return comments.map((_element, index) => createComment(index + 1));
-};
-
-const createUserData = () => ({
+const createUserData = (id) => ({
   id,
-  url: `photos/${id}.jpg`,
+  url: `photos/${getRandomPositiveInteger(1, MAX_PHOTO)}.jpg`,
   description: DESCRIPTION[getRandomPositiveInteger(0, DESCRIPTION.length - 1)],
   likes: getRandomPositiveInteger(LIKES.MIN, LIKES.MAX),
-  comments: createCommentsArray()
+  comments: createComment(id)
 });
 
-const createPhotosArray = () => {
-  const photos = Array.from({
-    length: 25
-  });
-  return photos.map((_element, index) => createPhotosArray(index + 1));
-};
+const createPhotosArray = Array.from({length: 25}).map((element, index) => element = createUserData(index + 1));
 
 createPhotosArray();
 
