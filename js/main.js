@@ -54,7 +54,7 @@ const createUserData = (id) => ({
   comments: createComment(id)
 });
 
-const createPhotosArray = Array.from({length: 25}).map((element, index) => {element = createUserData(index + 1)});
+const createPhotosArray = Array.from({length: 25}).map((element, index) => (element = createUserData(index + 1)));
 
 createPhotosArray();
 
