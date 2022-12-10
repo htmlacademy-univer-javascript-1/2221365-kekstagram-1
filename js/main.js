@@ -28,7 +28,7 @@ const LIKES = {
 
 function checkStringLength (string, length) {
   return string.length <= length;
-};
+}
 
 const getRandomPositiveInteger = (a, b) => {
   const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
@@ -49,7 +49,7 @@ const createCommentsArray = () => {
     length: 4
   });
   return comments.map((_element, index) => createComment(index + 1));
-}
+};
 
 const createUserData = (id) => ({
   id,
@@ -64,7 +64,7 @@ const createPhotosArray = () => {
     length: 25
   });
   return photos.map((_element, index) => createPhotosArray(index + 1));
-}
+};
 
 createPhotosArray();
 
