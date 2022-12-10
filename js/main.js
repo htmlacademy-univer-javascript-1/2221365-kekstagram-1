@@ -51,7 +51,7 @@ const createCommentsArray = () => {
   return comments.map((_element, index) => createComment(index + 1));
 };
 
-const createUserData = (id) => ({
+const createUserData = () => ({
   id,
   url: `photos/${id}.jpg`,
   description: DESCRIPTION[getRandomPositiveInteger(0, DESCRIPTION.length - 1)],
