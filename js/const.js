@@ -26,6 +26,11 @@ const LIKES = {
   MAX: 200
 };
 
+const CountComment = {
+  MIN: 0,
+  MAX: 23
+};
+
 const MAX_PHOTO = 25;
 
-export { NAMES, DESCRIPTIONS, MESSAGES, AVATAR, LIKES, MAX_PHOTO };
+export { NAMES, DESCRIPTIONS, MESSAGES, AVATAR, LIKES, MAX_PHOTO, CountComment};
