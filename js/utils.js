@@ -1,6 +1,5 @@
-function checkStringLength (string, length) {
-  return string.length <= length;
-}
+// eslint-disable-next-line no-undef
+const checkStringLength = () => str.length <= maxLength;
 
 const getRandomPositiveInteger = (a, b) => {
   const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
@@ -9,4 +8,4 @@ const getRandomPositiveInteger = (a, b) => {
   return Math.floor(result);
 };
 
-export {checkStringLength, getRandomPositiveInteger};
+export { checkStringLength, getRandomPositiveInteger };
