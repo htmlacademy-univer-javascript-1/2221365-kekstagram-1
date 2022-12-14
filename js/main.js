@@ -1,6 +1,7 @@
-import { checkStringLength, getRandomPositiveInteger } from './utils.js' ;
-import { createPhotosArray } from './data.js';
+import { getRandomPositiveInteger } from './utils.js' ;
+import { createPhotos } from './data.js';
+import { getThumbnails } from './thumbnails.js';
 
-createPhotosArray();
-checkStringLength();
+const data = createPhotos();
+getThumbnails(data);
 getRandomPositiveInteger();
