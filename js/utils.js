@@ -1,5 +1,4 @@
-// // eslint-disable-next-line no-undef
-// const checkStringLength = () => str.length <= maxLength;
+const checkStringLength = (str, maxLength) => str.length <= maxLength;
 
 const getRandomPositiveInteger = (a, b) => {
   const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
@@ -8,4 +7,6 @@ const getRandomPositiveInteger = (a, b) => {
   return Math.floor(result);
 };
 
-export { getRandomPositiveInteger};
+const isEscapeKey = (evt) => evt.key === 'Escape';
+
+export { getRandomPositiveInteger, isEscapeKey, checkStringLength };

@@ -1,3 +1,5 @@
+import { isEscapeKey } from './utils.js';
+
 const bigPicture = document.querySelector('.big-picture');
 const bigPictureImg = bigPicture.querySelector('.big-picture__img img');
 const bigPictureCloseBtn = bigPicture.querySelector('.big-picture__cancel');
@@ -53,7 +55,7 @@ const closeBigPicture = () => {
   document.body.classList.remove('modal-open');
   bigPicture.classList.add('hidden');
   bigPictureCloseBtn.removeEventListener('click', onBigPictureCloseBtnClick);
-  window.removeEventListener('keydown', onWindowEscKeydown);
+  document.removeEventListener('keydown', onWindowEscKeydown);
   bigPictureCommentsLoaderBtn.classList.remove('hidden');
   bigPictureCommentsLoaderBtn.removeEventListener('click', onBigPictureCommentsLoaderBtnClick);
   countRenderedComments = 5;
@@ -63,8 +65,11 @@ function onBigPictureCloseBtnClick() {
   closeBigPicture();
 }
 
-function onWindowEscKeydown() {
-  closeBigPicture();
+function onWindowEscKeydown (evt) {
+  if (isEscapeKey(evt)) {
+    evt.preventDefault();
+    closeBigPicture();
+  }
 }
 
 function onBigPictureCommentsLoaderBtnClick() {
@@ -86,4 +91,4 @@ const openBigPicture = (photo) => {
   window.addEventListener('keydown', onWindowEscKeydown);
 };
 
-export { openBigPicture };
+export { openBigPicture,  };
