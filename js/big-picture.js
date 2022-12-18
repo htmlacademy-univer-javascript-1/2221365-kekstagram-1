@@ -1,4 +1,5 @@
 import { isEscapeKey } from './utils.js';
+import { MAX_RENDER_COMMENTS } from './const.js';
 
 const bigPicture = document.querySelector('.big-picture');
 const bigPictureImg = bigPicture.querySelector('.big-picture__img img');
@@ -10,7 +11,7 @@ const bigPictureCaption = bigPicture.querySelector('.social__caption');
 const bigPictureLike = bigPicture.querySelector('.likes-count');
 
 let actualComments = [];
-let countRenderedComments = 5;
+let countRenderedComments = MAX_RENDER_COMMENTS;
 
 const getCommentTemplate = ({avatar, message, name}) => `<li class="social__comment">
   <img class="social__picture" src="${avatar}" alt="${name}" width="35" height="35">
@@ -58,7 +59,7 @@ const closeBigPicture = () => {
   document.removeEventListener('keydown', onWindowEscKeydown);
   bigPictureCommentsLoaderBtn.classList.remove('hidden');
   bigPictureCommentsLoaderBtn.removeEventListener('click', onBigPictureCommentsLoaderBtnClick);
-  countRenderedComments = 5;
+  countRenderedComments = MAX_RENDER_COMMENTS;
 };
 
 function onBigPictureCloseBtnClick() {
@@ -73,7 +74,7 @@ function onWindowEscKeydown (evt) {
 }
 
 function onBigPictureCommentsLoaderBtnClick() {
-  countRenderedComments += 5;
+  countRenderedComments += MAX_RENDER_COMMENTS;
   renderComments();
 }
 
