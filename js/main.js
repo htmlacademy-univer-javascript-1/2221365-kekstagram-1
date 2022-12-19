@@ -5,3 +5,4 @@ import './validate-form.js';
 
 const data = createPhotos();
 initThumbnails(data);
+

@@ -39,14 +39,14 @@ const validateDuplicateHashtag = (value) => (value === '') ? true : !anyElementI
 pristine.addValidator(
   hashtagsField,
   validateDuplicateHashtag,
-  'Один и тот же хэш-тег не может быть использован дважды. Хэш-теги нечувствительны к регистру.',
+  'Один и тот же хэш-тег не может быть использован дважды.',
   //2
 );
 
 pristine.addValidator(
   hashtagsField,
   validateHashtagFormat,
-  `Хэш-тэги должны быть вида #hashtag и разделены пробелами. Максимальная длинна хэш-тега: ${MAX_HASHTAGS_LENGTH}.`,
+  `Хэш-тэги должны начинаться с # и разделяться пробелами. Максимальная длинна хэш-тега: ${MAX_HASHTAGS_LENGTH}.`,
   // 3
 );
 
