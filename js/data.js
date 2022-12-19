@@ -1,9 +1,9 @@
 import { getRandomPositiveInteger } from './utils.js';
-import { AVATAR, MESSAGES, NAMES, MAX_PHOTO, DESCRIPTIONS, LIKES, CountComment } from './const.js';
+import { Avatar, MESSAGES, NAMES, MAX_PHOTO, DESCRIPTIONS, Likes, CountComment } from './const.js';
 
 const createComment = (id) => ({
   id,
-  avatar: `img/avatar-${(getRandomPositiveInteger(AVATAR.MIN, AVATAR.MAX))}.svg`,
+  avatar: `img/avatar-${(getRandomPositiveInteger(Avatar.MIN, Avatar.MAX))}.svg`,
   message: MESSAGES[getRandomPositiveInteger(0, MESSAGES.length - 1)],
   name: NAMES[getRandomPositiveInteger(0, NAMES.length - 1)]
 });
@@ -14,7 +14,7 @@ const createUserData = (id) => ({
   id,
   url: `photos/${ getRandomPositiveInteger(1, MAX_PHOTO) }.jpg`,
   description: DESCRIPTIONS[getRandomPositiveInteger(0, DESCRIPTIONS.length - 1)],
-  likes: getRandomPositiveInteger(LIKES.MIN, LIKES.MAX),
+  likes: getRandomPositiveInteger(Likes.MIN, Likes.MAX),
   comments: createComments(id)
 });
 

@@ -16,12 +16,12 @@ const MESSAGES = [
   'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!' ];
 
-const AVATAR = {
+const Avatar = {
   MIN: 1,
   MAX: 6
 };
 
-const LIKES = {
+const Likes = {
   MIN: 15,
   MAX: 200
 };
@@ -39,4 +39,4 @@ const MAX_HASHTAGS_COUNT = 5;
 const MAX_HASHTAGS_LENGTH = 20;
 const MAX_DESCRIPTION_LENGTH = 140;
 
-export { NAMES, DESCRIPTIONS, MESSAGES, AVATAR, LIKES, MAX_PHOTO, CountComment, MAX_HASHTAGS_COUNT, MAX_HASHTAGS_LENGTH, MAX_DESCRIPTION_LENGTH, MAX_RENDER_COMMENTS };
+export { NAMES, DESCRIPTIONS, MESSAGES, Avatar, Likes, MAX_PHOTO, CountComment, MAX_HASHTAGS_COUNT, MAX_HASHTAGS_LENGTH, MAX_DESCRIPTION_LENGTH, MAX_RENDER_COMMENTS };

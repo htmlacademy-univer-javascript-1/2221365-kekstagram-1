@@ -1,4 +1,6 @@
 import { isEscapeKey } from './utils.js';
+import { setSlider, addEffectsListClickHandler, removeEffectsListClickHandler } from './photo-effects.js';
+import { changeImageScale, addZoomButtonsClickHandlers, removeZoomButtonsClickHandlers, DEFAULT_SCALE_VALUE } from './photo-scale.js';
 
 const renderUploadModal = document.querySelector('.img-upload');
 const uploadFileInput = renderUploadModal.querySelector('#upload-file');
@@ -10,6 +12,8 @@ const closeUploadingModal = () => {
   document.body.classList.remove('modal-open');
   modalCloseButton.removeEventListener('click', closeUploadingModal);
   document.removeEventListener('keydown', onModalEscKeydown);
+  removeEffectsListClickHandler();
+  removeZoomButtonsClickHandlers();
 };
 
 const openUploadingModal = () => {
@@ -17,6 +21,10 @@ const openUploadingModal = () => {
   document.body.classList.add('modal-open');
   modalCloseButton.addEventListener('click', closeUploadingModal);
   document.addEventListener('keydown', onModalEscKeydown);
+  addEffectsListClickHandler();
+  changeImageScale(DEFAULT_SCALE_VALUE);
+  addZoomButtonsClickHandlers();
+  setSlider('none');
 };
 
 function onModalEscKeydown(evt) {
