@@ -24,4 +24,4 @@ pictureList.addEventListener('click', (evt) => {
   }
 });
 
-export {initThumbnails};
+export { initThumbnails };
