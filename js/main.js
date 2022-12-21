@@ -1,8 +1,21 @@
-import { createPhotos } from './data.js';
 import { initThumbnails } from './thumbnails.js';
-import './form.js';
-import './validate-form.js';
+import { getData } from './api.js';
+import { showAlert, showSuccessUploadMessage, showErrorUploadMessage } from './form.js';
+import {setUserFormSubmit} from './validate-form.js';
 
-const data = createPhotos();
-initThumbnails(data);
+getData(
+  (pictures) => {
+    initThumbnails(pictures);
+  },
+  () => {
+    showAlert('Не удалось загрузить данные. Перезагрузите страницу либо попробуйте позже, мы уже исправляем это!');
+  });
 
+setUserFormSubmit(
+  () => {
+    showSuccessUploadMessage();
+  },
+  () => {
+    showErrorUploadMessage();
+  }
+);

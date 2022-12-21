@@ -92,4 +92,4 @@ const openBigPicture = (photo) => {
   window.addEventListener('keydown', onWindowEscKeydown);
 };
 
-export { openBigPicture,  };
+export { openBigPicture, closeBigPicture };
