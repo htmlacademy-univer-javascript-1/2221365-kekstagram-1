@@ -23,6 +23,8 @@ const slider = uploadModal.querySelector('.img-upload__effect-level');
 const sliderElement = uploadModal.querySelector('.effect-level__slider');
 const effectLevelValue = uploadModal.querySelector('.effect-level__value');
 
+let currentFilter = 'none';
+
 function getSliderEffectOptions(min, max, start, step) {
   return {
     range: {min, max},
@@ -32,8 +34,6 @@ function getSliderEffectOptions(min, max, start, step) {
   };
 
 }
-
-let currentFilter = 'none';
 
 noUiSlider.create(sliderElement, SLIDER_EFFECT_OPTIONS[currentFilter]);
 

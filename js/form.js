@@ -1,7 +1,8 @@
 import { isEscapeKey } from './utils.js';
 import { setSlider, addEffectsListClickHandler, removeEffectsListClickHandler } from './photo-effects.js';
 import { changeImageScale, addZoomButtonsClickHandlers, removeZoomButtonsClickHandlers, DEFAULT_SCALE_VALUE } from './photo-scale.js';
-import { bringToDefaults } from './validate-form.js';
+import { bringToDefaults, removeSubmitButtonHandler } from './validate-form.js';
+import {uploadUserPhoto} from './uploading-photo.js';
 
 const renderUploadModal = document.querySelector('.img-upload');
 const uploadFileInput = renderUploadModal.querySelector('#upload-file');
@@ -10,13 +11,22 @@ const modalCloseButton = renderUploadModal.querySelector('#upload-cancel');
 const successMessageTemplate = document.querySelector('#success').content.querySelector('.success');
 const errorMessageTemplate = document.querySelector('#error').content.querySelector('.error');
 
+const toggleLoadErrorMessage = () => {
+  const loadErrorMessage = document.querySelector('.load-error-message');
+  if (loadErrorMessage) {
+    loadErrorMessage.classList.toggle('hidden');
+  }
+};
+
 const closeUploadingModal = () => {
   uploadOverlay.classList.add('hidden');
   document.body.classList.remove('modal-open');
   modalCloseButton.removeEventListener('click', closeUploadingModal);
   document.removeEventListener('keydown', onModalEscKeydown);
+  removeSubmitButtonHandler();
   removeEffectsListClickHandler();
   removeZoomButtonsClickHandlers();
+  toggleLoadErrorMessage();
 };
 
 const openUploadingModal = () => {
@@ -28,6 +38,7 @@ const openUploadingModal = () => {
   changeImageScale(DEFAULT_SCALE_VALUE);
   addZoomButtonsClickHandlers();
   bringToDefaults();
+  uploadUserPhoto();
   setSlider('none');
 };
 

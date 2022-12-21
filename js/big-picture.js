@@ -1,5 +1,5 @@
 import { isEscapeKey } from './utils.js';
-import { MAX_RENDER_COMMENTS } from './const.js';
+
 
 const bigPicture = document.querySelector('.big-picture');
 const bigPictureImg = bigPicture.querySelector('.big-picture__img img');
@@ -9,6 +9,8 @@ const bigPictureCommentsLoaderBtn = bigPicture.querySelector('.comments-loader')
 const bigPictureCounterComments = bigPicture.querySelector('.social__comment-count');
 const bigPictureCaption = bigPicture.querySelector('.social__caption');
 const bigPictureLike = bigPicture.querySelector('.likes-count');
+
+const MAX_RENDER_COMMENTS = 5;
 
 let actualComments = [];
 let countRenderedComments = MAX_RENDER_COMMENTS;

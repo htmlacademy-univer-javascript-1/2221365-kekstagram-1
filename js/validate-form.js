@@ -1,10 +1,13 @@
 import { checkStringLength, isEscapeKey } from './utils.js';
-import { MAX_HASHTAGS_COUNT, MAX_HASHTAGS_LENGTH, MAX_DESCRIPTION_LENGTH } from './const.js';
 import {sendData} from './api.js';
 import {changeImageScale, DEFAULT_SCALE_VALUE} from './photo-scale.js';
 import { setSlider } from './photo-effects.js';
 
 const HASHTAGS_RE = /^#[A-za-zА-Яа-яЁё\d]{1,19}$/;
+
+const MAX_HASHTAGS_COUNT = 5;
+const MAX_HASHTAGS_LENGTH = 20;
+const MAX_DESCRIPTION_LENGTH = 140;
 
 const uploadModal = document.querySelector('.img-upload');
 const uploadForm = uploadModal.querySelector('.img-upload__form');
@@ -18,6 +21,7 @@ const bringToDefaults = () => {
   hashtagsField.value = '';
   descriptionField.value = '';
 };
+
 
 const pristine = new Pristine(uploadForm, {
   classTo: 'img-upload__field-wrapper',
@@ -115,4 +119,4 @@ const setUserFormSubmit = (onSuccess, onError) => {
   });
 };
 
-export {addSubmitButtonHandler, removeSubmitButtonHandler, setUserFormSubmit, bringToDefaults};
+export {addSubmitButtonHandler, removeSubmitButtonHandler, setUserFormSubmit, bringToDefaults };
