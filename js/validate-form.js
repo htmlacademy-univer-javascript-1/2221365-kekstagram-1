@@ -1,6 +1,6 @@
 import { checkStringLength, isEscapeKey } from './utils.js';
-import {sendData} from './api.js';
-import {changeImageScale, DEFAULT_SCALE_VALUE} from './photo-scale.js';
+import { sendData } from './api.js';
+import { changeImageScale, DEFAULT_SCALE_VALUE } from './photo-scale.js';
 import { setSlider } from './photo-effects.js';
 
 const HASHTAGS_RE = /^#[A-za-zА-Яа-яЁё\d]{1,19}$/;
@@ -119,4 +119,4 @@ const setUserFormSubmit = (onSuccess, onError) => {
   });
 };
 
-export {addSubmitButtonHandler, removeSubmitButtonHandler, setUserFormSubmit, bringToDefaults };
+export { addSubmitButtonHandler, removeSubmitButtonHandler, setUserFormSubmit, bringToDefaults };

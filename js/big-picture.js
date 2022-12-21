@@ -1,6 +1,5 @@
 import { isEscapeKey } from './utils.js';
 
-
 const bigPicture = document.querySelector('.big-picture');
 const bigPictureImg = bigPicture.querySelector('.big-picture__img img');
 const bigPictureCloseBtn = bigPicture.querySelector('.big-picture__cancel');
@@ -11,9 +10,9 @@ const bigPictureCaption = bigPicture.querySelector('.social__caption');
 const bigPictureLike = bigPicture.querySelector('.likes-count');
 
 const MAX_RENDER_COMMENTS = 5;
+let countRenderedComments = MAX_RENDER_COMMENTS;
 
 let actualComments = [];
-let countRenderedComments = MAX_RENDER_COMMENTS;
 
 const getCommentTemplate = ({avatar, message, name}) => `<li class="social__comment">
   <img class="social__picture" src="${avatar}" alt="${name}" width="35" height="35">
