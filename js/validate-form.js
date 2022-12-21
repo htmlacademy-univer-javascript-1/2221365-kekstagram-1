@@ -1,5 +1,8 @@
 import { checkStringLength, isEscapeKey } from './utils.js';
 import { MAX_HASHTAGS_COUNT, MAX_HASHTAGS_LENGTH, MAX_DESCRIPTION_LENGTH } from './const.js';
+import {sendData} from './api.js';
+import {changeImageScale, DEFAULT_SCALE_VALUE} from './photo-scale.js';
+import { setSlider } from './photo-effects.js';
 
 const HASHTAGS_RE = /^#[A-za-zА-Яа-яЁё\d]{1,19}$/;
 
@@ -8,6 +11,13 @@ const uploadForm = uploadModal.querySelector('.img-upload__form');
 const descriptionField = uploadForm.querySelector('[name="description"]');
 const hashtagsField = uploadForm.querySelector('[name="hashtags"]');
 
+
+const bringToDefaults = () => {
+  changeImageScale(DEFAULT_SCALE_VALUE);
+  setSlider('none');
+  hashtagsField.value = '';
+  descriptionField.value = '';
+};
 
 const pristine = new Pristine(uploadForm, {
   classTo: 'img-upload__field-wrapper',
@@ -75,3 +85,34 @@ hashtagsField.addEventListener('keydown', (evt) => {
   }
 });
 
+
+const submitForm = (evt) => {
+  if (!pristine.validate()) {
+    evt.preventDefault();
+  }
+};
+const addSubmitButtonHandler = () => {
+  uploadForm.addEventListener('submit', submitForm);
+};
+const removeSubmitButtonHandler = () => {
+  uploadForm.removeEventListener('submit', submitForm);
+};
+
+const setUserFormSubmit = (onSuccess, onError) => {
+  uploadForm.addEventListener ('submit', (evt) => {
+    evt.preventDefault();
+    if (pristine.validate()) {
+      sendData(
+        () => {
+          onSuccess();
+        },
+        () => {
+          onError();
+        },
+        new FormData(uploadForm)
+      );
+    }
+  });
+};
+
+export {addSubmitButtonHandler, removeSubmitButtonHandler, setUserFormSubmit, bringToDefaults};

@@ -1,36 +1,27 @@
 import { openBigPicture } from './big-picture.js';
 
-const picturesContainer = document.querySelector('.pictures');
+const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
+const pictureList = document.querySelector('.pictures');
+const pictureListFragment = document.createDocumentFragment();
 
-let photos = [];
+const initThumbnails = (picturesData) => {
+  picturesData.forEach((pictureData) => {
+    const picture = pictureTemplate.cloneNode(true);
+    const pictureImg = picture.querySelector('.picture__img');
+    pictureImg.src = pictureData.url;
+    pictureImg.dataset.pictureData = JSON.stringify(pictureData);
+    picture.querySelector('.picture__comments').textContent = pictureData.comments.length.toString();
+    picture.querySelector('.picture__likes').textContent = pictureData.likes;
+    pictureListFragment.appendChild(picture);
+  });
+  pictureList.appendChild(pictureListFragment);
+};
 
-const getThumbnailTemplate = ({id, url, likes, comments}) => `<a href="#" class="picture js-picture" data-id="${id}">
-    <img class="picture__img" src="${url}" width="182" height="182" alt="Случайная фотография">
-    <p class="picture__info">
-      <span class="picture__comments">${comments.length}</span>
-      <span class="picture__likes">${likes}</span>
-    </p>
-  </a>
-`;
-
-const onThumbnailClick = (evt) => {
+pictureList.addEventListener('click', (evt) => {
   const target = evt.target;
-  const picture = target.closest('.js-picture');
-  if ( picture ) {
-    const id = picture.dataset.id;
-    const [ photo ] = photos.filter((element) => element.id === +id);
-    openBigPicture(photo);
+  if (target.nodeName === 'IMG') {
+    openBigPicture(JSON.parse(target.dataset.pictureData));
   }
-};
+});
 
-const createThumbnails = () => {
-  picturesContainer.insertAdjacentHTML('afterbegin', photos.map((photo) => getThumbnailTemplate(photo)).join(''));
-};
-
-const initThumbnails = (data) => {
-  photos = data.slice();
-  createThumbnails();
-  picturesContainer.addEventListener('click', onThumbnailClick);
-};
-
-export { initThumbnails };
+export {initThumbnails};
