@@ -55,4 +55,4 @@ const removeZoomButtonsClickHandlers = () => {
   });
 };
 
-export {changeImageScale, addZoomButtonsClickHandlers, removeZoomButtonsClickHandlers, DEFAULT_SCALE_VALUE};
+export { changeImageScale, addZoomButtonsClickHandlers, removeZoomButtonsClickHandlers, DEFAULT_SCALE_VALUE };

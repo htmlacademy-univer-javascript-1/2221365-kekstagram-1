@@ -2,7 +2,7 @@ import { isEscapeKey } from './utils.js';
 import { setSlider, addEffectsListClickHandler, removeEffectsListClickHandler } from './photo-effects.js';
 import { changeImageScale, addZoomButtonsClickHandlers, removeZoomButtonsClickHandlers, DEFAULT_SCALE_VALUE } from './photo-scale.js';
 import { bringToDefaults, removeSubmitButtonHandler } from './validate-form.js';
-import {uploadUserPhoto} from './uploading-photo.js';
+import { uploadUserPhoto } from './uploading-photo.js';
 
 const renderUploadModal = document.querySelector('.img-upload');
 const uploadFileInput = renderUploadModal.querySelector('#upload-file');

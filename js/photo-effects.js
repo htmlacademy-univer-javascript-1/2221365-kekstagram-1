@@ -70,4 +70,4 @@ const removeEffectsListClickHandler = () => {
   effectsList.removeEventListener('click', changeImgEffect);
 };
 
-export {setSlider, addEffectsListClickHandler, removeEffectsListClickHandler};
+export { setSlider, addEffectsListClickHandler, removeEffectsListClickHandler };
